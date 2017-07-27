@@ -1,8 +1,8 @@
 Gem::Specification.new do |spec|
   spec.name        = 'puppet-lint-i18n'
   spec.version     = '0.1.0'
-  spec.homepage    = 'duh'
-  spec.license     = ''
+  spec.homepage    = 'https://github.com/puppetlabs/puppet-lint-i18n'
+  spec.license     = 'Apache 2.0'
   spec.author      = 'puppet'
   spec.files       = Dir[
     'README.md',
@@ -21,4 +21,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec-its', '~> 1.0'
   spec.add_development_dependency 'rspec-collection_matchers', '~> 1.0'
   spec.add_development_dependency 'rake'
+  spec.add_development_dependency 'pry'
 end
