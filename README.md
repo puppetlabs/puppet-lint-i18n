@@ -12,7 +12,20 @@ gem 'puppet-lint-i18n'
 
 ## Usage
 
-This plugin provides a new check to `puppet-lint`.
+This plugin provides a new check to `puppet-lint`. It will detect functions that do not have their message wrapped in  a translate function.
+
+Functions detected:
+
+warning
+fail 
+
+For example the following
+
+warning('message')
+
+becomes 
+
+warning(tstr('message'))
 
 ### make sure 
 
@@ -21,5 +34,5 @@ This plugin provides a new check to `puppet-lint`.
 This check will raise a warning for any files that don't have correct decoration.
 
 ```
-WARNING: this is crud :(
+WARNING: 'fail' messages should be decorated.
 ```

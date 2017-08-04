@@ -1,23 +1,23 @@
 require 'spec_helper'
 
-describe 'trailing_newline' do
-  let(:msg) { 'expected newline at the end of the file' }
+describe 'check_i18n' do
+  let(:msg) { "'warning' messages should be decorated: eg tstr(message)" }
 
   context 'with fix disabled' do
-    context 'code not ending with a newline' do
-      let(:code) { "'test'" }
+    context 'function without translate function' do
+      let(:code) { "warning('message')" }
 
       it 'should detect a single problem' do
         expect(problems).to have(1).problem
       end
 
       it 'should create a warning' do
-        expect(problems).to contain_warning(msg).on_line(1).in_column(6)
+        expect(problems).to contain_warning(msg).on_line(1).in_column(1)
       end
     end
 
-    context 'code ending with a newline' do
-      let(:code) { "'test'\n" }
+    context 'function with translate function' do
+      let(:code) { "warning(tstr('message'))" }
 
       it 'should not detect any problems' do
         expect(problems).to have(0).problems
@@ -25,41 +25,41 @@ describe 'trailing_newline' do
     end
   end
 
-  context 'with fix enabled' do
-    before do
-      PuppetLint.configuration.fix = true
-    end
-
-    after do
-      PuppetLint.configuration.fix = false
-    end
-
-    context 'code not ending in a newline' do
-      let(:code) { "'test'" }
-
-      it 'should only detect a single problem' do
-        expect(problems).to have(1).problem
-      end
-
-      it 'should fix the problem' do
-        expect(problems).to contain_fixed(msg).on_line(1).in_column(6)
-      end
-
-      it 'should add a newline to the end of the manifest' do
-        expect(manifest).to eq("'test'\n")
-      end
-    end
-
-    context 'code ending in a newline' do
-      let(:code) { "'test'\n" }
-
-      it 'should not detect any problems' do
-        expect(problems).to have(0).problems
-      end
-
-      it 'should not modify the manifest' do
-        expect(manifest).to eq(code)
-      end
-    end
-  end
+#  context 'with fix enabled' do
+#    before do
+#      PuppetLint.configuration.fix = true
+#    end
+#
+#    after do
+#      PuppetLint.configuration.fix = false
+#    end
+#
+#    context 'code not ending in a newline' do
+#      let(:code) { "'test'" }
+#
+#      it 'should only detect a single problem' do
+#        expect(problems).to have(1).problem
+#      end
+#
+#      it 'should fix the problem' do
+#        expect(problems).to contain_fixed(msg).on_line(1).in_column(6)
+#      end
+#
+#      it 'should add a newline to the end of the manifest' do
+#        expect(manifest).to eq("'test'\n")
+#      end
+#    end
+#
+#    context 'code ending in a newline' do
+#      let(:code) { "'test'\n" }
+#
+#      it 'should not detect any problems' do
+#        expect(problems).to have(0).problems
+#      end
+#
+#      it 'should not modify the manifest' do
+#        expect(manifest).to eq(code)
+#      end
+#    end
+#  end
 end
