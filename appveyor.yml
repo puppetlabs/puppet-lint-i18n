@@ -1,0 +1,27 @@
+build: off
+
+branches:
+  only:
+    - master
+
+# ruby versions under test
+environment:
+  matrix:
+    - RUBY_VERSION: 24-x64
+
+install:
+  - SET PATH=C:\Ruby%RUBY_VERSION%\bin;%PATH%
+  - SET LOG_SPEC_ORDER=true
+  - bundle install --jobs 4 --retry 2 --without development
+
+before_test:
+  - type Gemfile.lock
+  - ruby -v
+  - gem -v
+  - bundle -v
+
+test_script:
+  - bundle exec rake
+
+notifications:
+  email: false
