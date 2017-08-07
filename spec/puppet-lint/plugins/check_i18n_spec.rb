@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'check_i18n' do
-  let(:msg) { "'warning' messages should be decorated: eg tstr(message)" }
+  let(:msg) { "'warning' messages should be decorated: eg translate(message)" }
 
   context 'with fix disabled' do
     context 'function without translate function' do
@@ -12,12 +12,12 @@ describe 'check_i18n' do
       end
 
       it 'should create a warning' do
-        expect(problems).to contain_warning(msg).on_line(1).in_column(1)
+        expect(problems).to contain_warning(msg).on_line(1).in_column(9)
       end
     end
 
     context 'function with translate function' do
-      let(:code) { "warning(tstr('message'))" }
+      let(:code) { "warning(translate('message'))" }
 
       it 'should not detect any problems' do
         expect(problems).to have(0).problems
@@ -42,16 +42,16 @@ describe 'check_i18n' do
       end
 
       it 'should fix the problem' do
-        expect(problems).to contain_fixed(msg).on_line(1).in_column(1)
+        expect(problems).to contain_fixed(msg).on_line(1).in_column(9)
       end
 
       it 'should add a newline to the end of the manifest' do
-        expect(manifest).to eq("warning(tstr('message'))")
+        expect(manifest).to eq("warning(translate('message'))")
       end
     end
 
     context 'function with translate function' do
-      let(:code) { "warning(tstr('message'))" }
+      let(:code) { "warning(translate('message'))" }
 
       it 'should not detect any problems' do
         expect(problems).to have(0).problems
