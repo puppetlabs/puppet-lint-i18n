@@ -12,7 +12,7 @@ describe 'check_i18n' do
       end
 
       it 'should create a warning' do
-        expect(problems).to contain_warning(msg).on_line(1).in_column(1)
+        expect(problems).to contain_warning(msg).on_line(1).in_column(9)
       end
     end
 
@@ -42,7 +42,7 @@ describe 'check_i18n' do
       end
 
       it 'should fix the problem' do
-        expect(problems).to contain_fixed(msg).on_line(1).in_column(1)
+        expect(problems).to contain_fixed(msg).on_line(1).in_column(9)
       end
 
       it 'should add a newline to the end of the manifest' do
