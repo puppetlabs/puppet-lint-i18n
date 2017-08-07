@@ -1,7 +1,7 @@
 require 'pry'
 
 PuppetLint.new_check(:check_i18n) do
-  TRANSLATE_FUNCTION = "tstr"
+  TRANSLATE_FUNCTION = 'translate'
   STRINGY = Set[:STRING, :SSTRING, :DQPRE]
   FUNCTIONS_TO_BE_DECORATED = Set['warning', 'fail']
   def check
@@ -23,7 +23,7 @@ PuppetLint.new_check(:check_i18n) do
     # index = tokens.index(problem[:token]) 
     # token.find_token_of(:next, :RPAREN, :skip_blocks => true)
 
-    tokens.insert(2, PuppetLint::Lexer::Token.new(:NAME, "tstr", 0, 0))
+    tokens.insert(2, PuppetLint::Lexer::Token.new(:NAME, TRANSLATE_FUNCTION, 0, 0))
     tokens.insert(3, PuppetLint::Lexer::Token.new(:LPAREN, "(", 0, 0))
     tokens.insert(5, PuppetLint::Lexer::Token.new(:RPAREN, ")", 0, 0))
   end

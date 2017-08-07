@@ -25,7 +25,7 @@ warning('message')
 
 becomes 
 
-warning(tstr('message'))
+warning(translate('message'))
 
 ### make sure 
 
