@@ -25,41 +25,41 @@ describe 'check_i18n' do
     end
   end
 
-#  context 'with fix enabled' do
-#    before do
-#      PuppetLint.configuration.fix = true
-#    end
-#
-#    after do
-#      PuppetLint.configuration.fix = false
-#    end
-#
-#    context 'code not ending in a newline' do
-#      let(:code) { "'test'" }
-#
-#      it 'should only detect a single problem' do
-#        expect(problems).to have(1).problem
-#      end
-#
-#      it 'should fix the problem' do
-#        expect(problems).to contain_fixed(msg).on_line(1).in_column(6)
-#      end
-#
-#      it 'should add a newline to the end of the manifest' do
-#        expect(manifest).to eq("'test'\n")
-#      end
-#    end
-#
-#    context 'code ending in a newline' do
-#      let(:code) { "'test'\n" }
-#
-#      it 'should not detect any problems' do
-#        expect(problems).to have(0).problems
-#      end
-#
-#      it 'should not modify the manifest' do
-#        expect(manifest).to eq(code)
-#      end
-#    end
-#  end
+  context 'with fix enabled' do
+    before do
+      PuppetLint.configuration.fix = true
+    end
+
+    after do
+      PuppetLint.configuration.fix = false
+    end
+
+    context 'function without a translate function' do
+      let(:code) { "warning('message')" }
+
+      it 'should only detect a single problem' do
+        expect(problems).to have(1).problem
+      end
+
+      it 'should fix the problem' do
+        expect(problems).to contain_fixed(msg).on_line(1).in_column(1)
+      end
+
+      it 'should add a newline to the end of the manifest' do
+        expect(manifest).to eq("warning(tstr('message'))")
+      end
+    end
+
+    context 'function with translate function' do
+      let(:code) { "warning(tstr('message'))" }
+
+      it 'should not detect any problems' do
+        expect(problems).to have(0).problems
+      end
+
+      it 'should not modify the manifest' do
+        expect(manifest).to eq(code)
+      end
+    end
+  end
 end
