@@ -6,7 +6,7 @@ require 'puppet-lint/plugins/version'
 
 Gem::Specification.new do |spec|
   spec.name        = 'puppet-lint-i18n'
-  spec.version     = CHECK_I18N::VERSION
+  spec.version     = CheckI18n::VERSION
   spec.homepage    = 'https://github.com/puppetlabs/puppet-lint-i18n'
   spec.license     = 'Apache 2.0'
   spec.authors     = ['Puppet, Inc.']
@@ -22,9 +22,5 @@ Gem::Specification.new do |spec|
     Will check the decoration of your puppet code
   EOF
 
-  spec.add_dependency             'puppet-lint', '> 2.0'
-  spec.add_development_dependency 'rspec', '~> 3.0'
-  spec.add_development_dependency 'rspec-its', '~> 1.0'
-  spec.add_development_dependency 'rspec-collection_matchers', '~> 1.0'
-  spec.add_development_dependency 'rake'
+  spec.add_dependency 'puppet-lint', '> 2.0'
 end

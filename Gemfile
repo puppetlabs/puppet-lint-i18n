@@ -7,6 +7,8 @@ group :test do
   gem 'rspec-its', '~> 1.0'
   gem 'rspec-collection_matchers', '~> 1.0'
   gem 'rspec', '~> 3.0'
+  gem 'rubocop'
+  gem 'rubocop-rspec'
   gem 'json'
 end
 
