@@ -7,11 +7,11 @@ describe 'check_i18n' do
     context 'function without translate function' do
       let(:code) { "warning('message')" }
 
-      it 'should detect a single problem' do
+      it 'detects a single problem' do
         expect(problems).to have(1).problem
       end
 
-      it 'should create a warning' do
+      it 'creates a warning' do
         expect(problems).to contain_warning(msg).on_line(1).in_column(9)
       end
     end
@@ -19,33 +19,33 @@ describe 'check_i18n' do
     context 'function with translate function' do
       let(:code) { "warning(translate('message'))" }
 
-      it 'should not detect any problems' do
+      it 'does not detect any problems' do
         expect(problems).to have(0).problems
       end
     end
   end
 
   context 'with fix enabled' do
-    before do
+    before(:each) do
       PuppetLint.configuration.fix = true
     end
 
-    after do
+    after(:each) do
       PuppetLint.configuration.fix = false
     end
 
     context 'function without a translate function' do
       let(:code) { "warning('message')" }
 
-      it 'should only detect a single problem' do
+      it 'onlies detect a single problem' do
         expect(problems).to have(1).problem
       end
 
-      it 'should fix the problem' do
+      it 'fixes the problem' do
         expect(problems).to contain_fixed(msg).on_line(1).in_column(9)
       end
 
-      it 'should add a newline to the end of the manifest' do
+      it 'adds a newline to the end of the manifest' do
         expect(manifest).to eq("warning(translate('message'))")
       end
     end
@@ -53,11 +53,11 @@ describe 'check_i18n' do
     context 'function with translate function' do
       let(:code) { "warning(translate('message'))" }
 
-      it 'should not detect any problems' do
+      it 'does not detect any problems' do
         expect(problems).to have(0).problems
       end
 
-      it 'should not modify the manifest' do
+      it 'does not modify the manifest' do
         expect(manifest).to eq(code)
       end
     end
