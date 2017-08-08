@@ -39,11 +39,13 @@ This tells you which file and what line the infringement occurred, as well as th
 ### Other Infringements
 
 + Multiline strings
-**Bad**
+
+**BAD**
 ```ruby
 warning(translate('to be or') / 
 translate('not to be'))
 ```
+
 **GOOD**
 ```ruby
 warning(translate('to be or not to be')
