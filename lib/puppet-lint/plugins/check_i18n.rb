@@ -1,5 +1,3 @@
-require 'pry'
-
 PuppetLint.new_check(:check_i18n) do
   TRANSLATE_FUNCTION = 'translate'
   STRINGY = Set[:STRING, :SSTRING, :DQPRE]
