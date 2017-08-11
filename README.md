@@ -21,11 +21,11 @@ This plugin provides a new check to `puppet-lint`. It will detect functions that
 ### Before and after
 
 For example the following puppet code does not wrap the message
-```ruby
+```puppet
 warning('message')
 ```
 wrapping the message then looks like
-```ruby
+```puppet
 warning(translate('message'))
 ```
 
@@ -41,19 +41,40 @@ This tells you which file and what line the infringement occurred, as well as th
 + Multiline strings
 
 **BAD**
-```ruby
+```puppet
 warning(translate('to be or') / 
 translate('not to be'))
 ```
 
 **GOOD**
-```ruby
+```puppet
 warning(translate('to be or not to be')
 ```
 
 + Concatenated strings
 + Heredoc strings
+
+The :HEREDOC_OPEN token (`@(EOL)`) should be the only part passed to the `translate()` function. Do not pass the entire heredoc.
+
+**BAD**
+```puppet
+warning(translate(@(EOL)
+  This is a heredoc.
+  It's lovely. 
+  | EOL))
+```
+
+**GOOD**
+```puppet
+warning(translate(@(EOL))
+  This is a heredoc.
+  It's lovely. 
+  | EOL)
+```
+
 + Interpolated strings
+
+_Interpolated strings are not supported at this time and will not be decorated with the fix option._
 
 ### Fix issues automatically
 
