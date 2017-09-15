@@ -1,5 +1,3 @@
-# coding: utf-8
-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'puppet-lint/plugins/version'
@@ -18,9 +16,7 @@ Gem::Specification.new do |spec|
   ]
   spec.test_files  = Dir['spec/**/*']
   spec.summary     = 'Will check the decoration of your puppet code'
-  spec.description = <<-EOF
-    Will check the decoration of your puppet code
-  EOF
+  spec.description = 'Will check the decoration of your puppet code'
 
   spec.add_dependency 'puppet-lint', '> 2.0'
 end

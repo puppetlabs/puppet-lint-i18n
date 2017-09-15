@@ -3,18 +3,23 @@
 All notable changes to this project will be documented in this file.
 
 
-## [v0.1.0](https://github.com/puppetlabs/puppet-lint-i18n/tree/v0.1.0) (2017-08-08)
+## [v1.0.0](https://github.com/puppetlabs/puppet-lint-i18n/tree/v1.0.0) (2017-09-15)
 
-[Full Changelog](https://github.com/puppetlabs/puppet-lint-i18n/compare/1acc01c85d67db00ca3c8d3297bc695be362679c...v0.1.0)
+[Full Changelog](https://github.com/puppetlabs/puppet-lint-i18n/compare/1acc01c85d67db00ca3c8d3297bc695be362679c...v1.0.0)
 
 **Implemented enhancements:**
 
+- \(MODULES-5405\) add heredoc and interp detection [\#10](https://github.com/puppetlabs/puppet-lint-i18n/pull/10) ([eputnam](https://github.com/eputnam))
+- MODULES-5402 changelog generation and maintenance [\#7](https://github.com/puppetlabs/puppet-lint-i18n/pull/7) ([tphoney](https://github.com/tphoney))
 - True autofix [\#6](https://github.com/puppetlabs/puppet-lint-i18n/pull/6) ([tphoney](https://github.com/tphoney))
 - MODULES-5399 add first tests, readme and travis [\#4](https://github.com/puppetlabs/puppet-lint-i18n/pull/4) ([tphoney](https://github.com/tphoney))
+- MODULES-5044 set licence and URL [\#2](https://github.com/puppetlabs/puppet-lint-i18n/pull/2) ([tphoney](https://github.com/tphoney))
 - MODULES-5044 initial checkin [\#1](https://github.com/puppetlabs/puppet-lint-i18n/pull/1) ([tphoney](https://github.com/tphoney))
 
 **Fixed bugs:**
 
+- enable rubocop /fix rubocop [\#9](https://github.com/puppetlabs/puppet-lint-i18n/pull/9) ([tphoney](https://github.com/tphoney))
+- MODULES-5404 readme cleanup [\#8](https://github.com/puppetlabs/puppet-lint-i18n/pull/8) ([tphoney](https://github.com/tphoney))
 - MODULES-5400 hardcoded auto-fix [\#5](https://github.com/puppetlabs/puppet-lint-i18n/pull/5) ([tphoney](https://github.com/tphoney))
 - MODULES-5044 update lint version requirement [\#3](https://github.com/puppetlabs/puppet-lint-i18n/pull/3) ([tphoney](https://github.com/tphoney))
 
