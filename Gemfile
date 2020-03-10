@@ -10,6 +10,7 @@ group :test do
   gem 'rubocop'
   gem 'rubocop-rspec'
   gem 'json'
+  gem 'simplecov'
 end
 
 group :development do
